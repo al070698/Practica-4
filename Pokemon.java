@@ -1,5 +1,5 @@
 public class Pokemon {
-
+ 
     private int hp = 100;
     private int nivel;
     private String nombre;
@@ -27,21 +27,19 @@ public class Pokemon {
         return nivel;
     }
 
-    private int calculaDanio() {
-        int danio = (int) (Math.random() * 10 + 1);
+    private void calculaDanio(int danio) {
         hp -= danio;
-        return danio;
+        System.out.printf("%s recibe %d puntos de danio\n", nombre, danio);
+        System.out.printf("%s ahora %d puntos de vida\n", nombre, hp);
     }
 
     public void recibirAtaque(String movimiento) {
         System.out.printf("%s recibe ATK %s\n", nombre, movimiento);
-        int danio = calculaDanio();
-        System.out.printf("%s tiene ahora %d puntos de vida.\n", nombre, hp);
-        System.out.printf("%s recibe %d puntos de danio\n", nombre, danio);
+        calculaDanio((int) (Math.random() * 10 + 1));
     }
 
     public void atacar(String movimiento, Pokemon pokemon) {
         System.out.printf("%s ataca a %s con %s\n", nombre, pokemon.getNombre(), movimiento);
         pokemon.recibirAtaque(movimiento);
     }
-}
+}   
